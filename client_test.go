@@ -2,9 +2,9 @@ package planx_sdk_core_go
 
 import (
 	"encoding/json"
-	"planx-sdk-core-go/api"
-	"planx-sdk-core-go/core"
-	"planx-sdk-core-go/core/credential"
+	"github.com/PlanXDev/planx-sdk-core-go/api"
+	"github.com/PlanXDev/planx-sdk-core-go/core"
+	"github.com/PlanXDev/planx-sdk-core-go/core/credential"
 	"testing"
 )
 

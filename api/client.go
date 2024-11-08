@@ -1,8 +1,8 @@
 package api
 
 import (
-	"planx-sdk-core-go/core"
-	"planx-sdk-core-go/core/credential"
+	"github.com/PlanXDev/planx-sdk-core-go/core"
+	"github.com/PlanXDev/planx-sdk-core-go/core/credential"
 )
 
 // PlanXClient is the sdk client struct, each func corresponds to an OpenAPI

@@ -1,9 +1,9 @@
 package api
 
 import (
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 	"github.com/shopspring/decimal"
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
 )
 
 // SendPoolInfoNew Transfer an equal amount of tokens from the base account to create a new funding pool.

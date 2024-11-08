@@ -1,9 +1,9 @@
 package api
 
 import (
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 	"github.com/shopspring/decimal"
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
 )
 
 // SendPoolCapacityChange Increase or decrease the assets of the fund pool.

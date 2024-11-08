@@ -1,8 +1,8 @@
 package api
 
 import (
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 )
 
 // SendPoolFundDestroy Destroys the fund pool and returns the available amount to the base account.

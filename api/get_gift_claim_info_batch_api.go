@@ -1,8 +1,8 @@
 package api
 
 import (
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 )
 
 // GetGiftClaimInfoBatch Batch query the sub-gift packs details corresponding to the superior gift pack code.

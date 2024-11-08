@@ -1,12 +1,12 @@
 package api
 
 import (
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 )
 
 // SendTradeDealBuy The trade of purchasing the specified ID will deduct the corresponding funds from the market account.
-//     * Please confirm whether the funds are sufficient when calling.
+//   - Please confirm whether the funds are sufficient when calling.
 func (client *PlanXClient) SendTradeDealBuy(request *SendTradeDealBuyRequest) (response *SendTradeDealBuyResponse, err error) {
 	response = CreateSendTradeDealBuyResponse()
 	err = client.DoActionWithSign(request, response)
@@ -14,7 +14,7 @@ func (client *PlanXClient) SendTradeDealBuy(request *SendTradeDealBuyRequest) (r
 }
 
 // SendTradeDealBuyWithChan The trade of purchasing the specified ID will deduct the corresponding funds from the market account.
-//     * Please confirm whether the funds are sufficient when calling.
+//   - Please confirm whether the funds are sufficient when calling.
 func (client *PlanXClient) SendTradeDealBuyWithChan(request *SendTradeDealBuyRequest) (<-chan *SendTradeDealBuyResponse, <-chan error) {
 	responseChan := make(chan *SendTradeDealBuyResponse, 1)
 	errChan := make(chan error, 1)

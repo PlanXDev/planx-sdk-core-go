@@ -1,8 +1,8 @@
 package api
 
 import (
-	"planx-sdk-core-go/core/requests"
-	"planx-sdk-core-go/core/responses"
+	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
+	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
 )
 
 // GetGiftSourceInfoDetail Check the details of the superior gift pack corresponding to the Code.
