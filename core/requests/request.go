@@ -209,7 +209,14 @@ func flatRepeatedList(dataValue reflect.Value, request ComRequest, position, pre
 						return
 					}
 				} else {
-					value := dataValue.Field(i).String()
+					var value interface{}
+					switch v := dataValue.Field(i).Interface().(type) {
+					case decimal.Decimal:
+						value = v.String()
+					default:
+						value = dataValue.Field(i).String()
+					}
+
 					err = addParam(request, fieldPosition, key, value)
 					if err != nil {
 						return
