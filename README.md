@@ -7,7 +7,7 @@ Here is the go version of PlanXSDK.
 ## Second step:
 > * Download the package into your project via the command:
 ```
-    go get github.com/PlanXDev/planx-sdk-core-go@v1.3.2
+    go get github.com/PlanXDev/planx-sdk-core-go@v1.3.3
 ```
 ## Example Usage
 > * This example get balance information for all token accounts:
