@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
 	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
-	"github.com/shopspring/decimal"
 )
 
 // SendGiftSourceInfoNew Create a new superior gift pack.
@@ -38,12 +37,12 @@ func (client *PlanXClient) SendGiftSourceInfoNewWithChan(request *SendGiftSource
 // SendGiftSourceInfoNewRequest is the request struct for api SendGiftSourceInfoNew
 type SendGiftSourceInfoNewRequest struct {
 	*requests.BaseRequest
-	PoolId         string          `position:"Body" name:"poolId" binding:"required"`                  //The unique identifier of the capital pool
-	GiftName       string          `position:"Body" name:"giftName" binding:"required"`                //Gift name
-	GiftType       string          `position:"Body" name:"giftType" binding:"required"`                //api.GiftTypeAirdrop,api.GiftTypeRedemption
-	Quantity       int             `position:"Body" name:"quantity" binding:"required,gte=1,lte=2000"` //Generate quantity,1<=quantity<=2000
-	PriceAmount    decimal.Decimal `position:"Body" name:"priceAmount" binding:"required,gt=0"`        //Number of tokens for a single Gift
-	ExpiresSeconds int64           `position:"Body" name:"expiresSeconds" binding:"required,gte=1"`    //Expiration time.Expires after specified number of seconds
+	PoolId         string `position:"Body" name:"poolId" binding:"required"`                  //The unique identifier of the capital pool
+	GiftName       string `position:"Body" name:"giftName" binding:"required"`                //Gift name
+	GiftType       string `position:"Body" name:"giftType" binding:"required"`                //api.GiftTypeAirdrop,api.GiftTypeRedemption
+	Quantity       int    `position:"Body" name:"quantity" binding:"required,gte=1,lte=2000"` //Generate quantity,1<=quantity<=2000
+	PriceAmount    string `position:"Body" name:"priceAmount" binding:"required,gt=0"`        //Number of tokens for a single Gift
+	ExpiresSeconds int64  `position:"Body" name:"expiresSeconds" binding:"required,gte=1"`    //Expiration time.Expires after specified number of seconds
 }
 
 // SendGiftSourceInfoNewResponse is the request struct for api SendGiftSourceInfoNew
@@ -53,7 +52,7 @@ type SendGiftSourceInfoNewResponse struct {
 }
 
 // CreateSendGiftSourceInfoNewRequest creates a request to invoke SendGiftSourceInfoNew API
-func CreateSendGiftSourceInfoNewRequest(poolId, giftName, giftType string, quantity int, priceAmount decimal.Decimal, expiresSeconds int64) (request *SendGiftSourceInfoNewRequest) {
+func CreateSendGiftSourceInfoNewRequest(poolId, giftName, giftType string, quantity int, priceAmount string, expiresSeconds int64) (request *SendGiftSourceInfoNewRequest) {
 	request = &SendGiftSourceInfoNewRequest{
 		BaseRequest:    requests.NewPostRequest("/v1/api/gift/info/new"),
 		PoolId:         poolId,

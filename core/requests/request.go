@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/shopspring/decimal"
 	"io"
 	"net/url"
 	"reflect"
@@ -209,14 +208,7 @@ func flatRepeatedList(dataValue reflect.Value, request ComRequest, position, pre
 						return
 					}
 				} else {
-					var value interface{}
-					switch v := dataValue.Field(i).Interface().(type) {
-					case decimal.Decimal:
-						value = v.String()
-					default:
-						value = dataValue.Field(i).String()
-					}
-
+					value := dataValue.Field(i).String()
 					err = addParam(request, fieldPosition, key, value)
 					if err != nil {
 						return
@@ -288,13 +280,21 @@ func checkNum(tag string, dataValue reflect.Value, name string, i int) error {
 		return errors.New(fmt.Sprintf("param %s tag format error", name))
 	}
 	cmp := 0
-	switch v := dataValue.Field(i).Interface().(type) {
-	case decimal.Decimal:
-		minn, err := decimal.NewFromString(tags[1])
+	if dataValue.Field(i).Kind().String() == "string" {
+		v, err := strconv.ParseFloat(dataValue.Field(i).String(), 64)
 		if err != nil {
 			return errors.New(fmt.Sprintf("param %s format number error", name))
 		}
-		cmp = v.Compare(minn)
+		fltn, err := strconv.ParseFloat(tags[1], 64)
+		if err != nil {
+			return errors.New(fmt.Sprintf("param %s format number error", name))
+		}
+		if v < fltn {
+			cmp = -1
+		}
+		if v > fltn {
+			cmp = 1
+		}
 	}
 	if strings.Contains(dataValue.Field(i).Kind().String(), "int") {
 		intn, err := strconv.ParseInt(tags[1], 10, 64)

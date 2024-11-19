@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
 	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
-	"github.com/shopspring/decimal"
 )
 
 // SendAccountMarketInvest Add funds to a designated token market account.
@@ -38,10 +37,10 @@ func (client *PlanXClient) SendAccountMarketInvestWithChan(request *SendAccountM
 // SendAccountMarketInvestRequest is the request struct for api SendAccountMarketInvest
 type SendAccountMarketInvestRequest struct {
 	*requests.BaseRequest
-	ExternalOrderId string          `position:"Body" name:"externalOrderId" binding:"required"`   //External order ID,This parameter is used to mark this operation
-	SourceSymbol    string          `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
-	TargetSymbol    string          `position:"Body" name:"targetSymbol" binding:"required"`      //Token name on the right
-	TargetAmount    decimal.Decimal `position:"Body" name:"targetAmount" binding:"required,gt=0"` //The amount of tokens on the right
+	ExternalOrderId string `position:"Body" name:"externalOrderId" binding:"required"`   //External order ID,This parameter is used to mark this operation
+	SourceSymbol    string `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
+	TargetSymbol    string `position:"Body" name:"targetSymbol" binding:"required"`      //Token name on the right
+	TargetAmount    string `position:"Body" name:"targetAmount" binding:"required,gt=0"` //The amount of tokens on the right
 }
 
 // SendAccountMarketInvestResponse is the request struct for api SendAccountMarketInvest
@@ -51,7 +50,7 @@ type SendAccountMarketInvestResponse struct {
 }
 
 // CreateSendAccountMarketInvestRequest creates a request to invoke SendAccountMarketInvest API
-func CreateSendAccountMarketInvestRequest(externalOrderId, sourceSymbol, TargetSymbol string, targetAmount decimal.Decimal) (request *SendAccountMarketInvestRequest) {
+func CreateSendAccountMarketInvestRequest(externalOrderId, sourceSymbol, TargetSymbol string, targetAmount string) (request *SendAccountMarketInvestRequest) {
 	request = &SendAccountMarketInvestRequest{
 		BaseRequest:     requests.NewPostRequest("/v1/api/account/market/invest"),
 		ExternalOrderId: externalOrderId,

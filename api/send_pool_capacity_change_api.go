@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
 	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
-	"github.com/shopspring/decimal"
 )
 
 // SendPoolCapacityChange Increase or decrease the assets of the fund pool.
@@ -38,10 +37,10 @@ func (client *PlanXClient) SendPoolCapacityChangeWithChan(request *SendPoolCapac
 // SendPoolCapacityChangeRequest is the request struct for api SendPoolCapacityChange
 type SendPoolCapacityChangeRequest struct {
 	*requests.BaseRequest
-	PoolId         string          `position:"Body" name:"poolId" binding:"required"`            //The unique identifier of the capital pool
-	SourceSymbol   string          `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
-	SourceAmount   decimal.Decimal `position:"Body" name:"sourceAmount" binding:"required,gt=0"` //The amount of tokens on the left
-	CapacityAction string          `position:"Body" name:"capacityAction" binding:"required"`    //api.PoolCapacityActionIncrease，api.PoolCapacityActionDecrease
+	PoolId         string `position:"Body" name:"poolId" binding:"required"`            //The unique identifier of the capital pool
+	SourceSymbol   string `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
+	SourceAmount   string `position:"Body" name:"sourceAmount" binding:"required,gt=0"` //The amount of tokens on the left
+	CapacityAction string `position:"Body" name:"capacityAction" binding:"required"`    //api.PoolCapacityActionIncrease，api.PoolCapacityActionDecrease
 }
 
 // SendPoolCapacityChangeResponse is the request struct for api SendPoolCapacityChange
@@ -51,7 +50,7 @@ type SendPoolCapacityChangeResponse struct {
 }
 
 // CreateSendPoolCapacityChangeRequest creates a request to invoke SendPoolCapacityChange API
-func CreateSendPoolCapacityChangeRequest(poolId, sourceSymbol, capacityAction string, sourceAmount decimal.Decimal) (request *SendPoolCapacityChangeRequest) {
+func CreateSendPoolCapacityChangeRequest(poolId, sourceSymbol, capacityAction string, sourceAmount string) (request *SendPoolCapacityChangeRequest) {
 	request = &SendPoolCapacityChangeRequest{
 		BaseRequest:    requests.NewPostRequest("/v1/api/pool/capacity/change"),
 		PoolId:         poolId,

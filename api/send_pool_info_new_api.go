@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/PlanXDev/planx-sdk-core-go/core/requests"
 	"github.com/PlanXDev/planx-sdk-core-go/core/responses"
-	"github.com/shopspring/decimal"
 )
 
 // SendPoolInfoNew Transfer an equal amount of tokens from the base account to create a new funding pool.
@@ -38,10 +37,10 @@ func (client *PlanXClient) SendPoolInfoNewWithChan(request *SendPoolInfoNewReque
 // SendPoolInfoNewRequest is the request struct for api SendPoolInfoNew
 type SendPoolInfoNewRequest struct {
 	*requests.BaseRequest
-	SourceSymbol string          `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
-	TargetSymbol string          `position:"Body" name:"targetSymbol" binding:"required"`      //Token name on the right
-	SourceAmount decimal.Decimal `position:"Body" name:"sourceAmount" binding:"required,gt=0"` //The amount of tokens on the left
-	TargetAmount decimal.Decimal `position:"Body" name:"targetAmount" binding:"required,gt=0"` //The amount of tokens on the right
+	SourceSymbol string `position:"Body" name:"sourceSymbol" binding:"required"`      //Token name on the left
+	TargetSymbol string `position:"Body" name:"targetSymbol" binding:"required"`      //Token name on the right
+	SourceAmount string `position:"Body" name:"sourceAmount" binding:"required,gt=0"` //The amount of tokens on the left
+	TargetAmount string `position:"Body" name:"targetAmount" binding:"required,gt=0"` //The amount of tokens on the right
 }
 
 // SendPoolInfoNewResponse is the request struct for api SendPoolInfoNew
@@ -51,7 +50,7 @@ type SendPoolInfoNewResponse struct {
 }
 
 // CreateSendPoolInfoNewRequest creates a request to invoke SendPoolInfoNew API
-func CreateSendPoolInfoNewRequest(sourceSymbol, targetSymbol string, sourceAmount, targetAmount decimal.Decimal) (request *SendPoolInfoNewRequest) {
+func CreateSendPoolInfoNewRequest(sourceSymbol, targetSymbol string, sourceAmount, targetAmount string) (request *SendPoolInfoNewRequest) {
 	request = &SendPoolInfoNewRequest{
 		BaseRequest:  requests.NewPostRequest("/v1/api/pool/info/new"),
 		SourceSymbol: sourceSymbol,
