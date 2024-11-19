@@ -208,7 +208,11 @@ func flatRepeatedList(dataValue reflect.Value, request ComRequest, position, pre
 						return
 					}
 				} else {
-					value := dataValue.Field(i).String()
+					var value interface{}
+					switch v := dataValue.Field(i).Interface().(type) {
+					default:
+						value = v
+					}
 					err = addParam(request, fieldPosition, key, value)
 					if err != nil {
 						return
