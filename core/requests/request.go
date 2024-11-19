@@ -210,6 +210,8 @@ func flatRepeatedList(dataValue reflect.Value, request ComRequest, position, pre
 				} else {
 					var value interface{}
 					switch v := dataValue.Field(i).Interface().(type) {
+					case int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64:
+						value = fmt.Sprintf("%v", dataValue.Field(i))
 					default:
 						value = v
 					}
