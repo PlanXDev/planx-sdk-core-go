@@ -46,7 +46,7 @@ type SendAccountMarketInvestRequest struct {
 // SendAccountMarketInvestResponse is the request struct for api SendAccountMarketInvest
 type SendAccountMarketInvestResponse struct {
 	*responses.BaseResponse
-	Data []*ResponseNewOrder `json:"data"`
+	Data *ResponseNewOrder `json:"data"`
 }
 
 // CreateSendAccountMarketInvestRequest creates a request to invoke SendAccountMarketInvest API
